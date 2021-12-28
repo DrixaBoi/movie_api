@@ -7,5 +7,149 @@
   <body>
     <p>This API will give the user access to information about movies, directors, and genres so they
       can learn more about movies they've watched or are interested in.</p>
+      <h2>URL Endpoints</h2>
+      <table>
+        <tr>
+          <th>User Request</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Response</th>
+        </tr>
+        <tr>
+          <td>View a list of movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>A JSON object holding data about movies</td>
+        </tr>
+        <tr>
+          <td>View data about a single movie</td>
+          <td>/movies/:title</td>
+          <td>GET</td>
+          <td>A JSON object holding data about a particular movie
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                title: "",
+                director: "",
+                description: "",
+                genre: "",
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>View a list of genres</td>
+          <td>/genres</td>
+          <td>GET</td>
+          <td>A JSON holding data about genres</td>
+        </tr>
+        <tr>
+          <td>View data about a specific genre</td>
+          <td>/genres/:name</td>
+          <td>GET</td>
+          <td>A JSON object holding data about a genre and movies of that genre
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                title: "",
+                genre: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>View data about a director by name</td>
+          <td>/directors/:name</td>
+          <td>GET</td>
+          <td>A JSON object holding data about a director
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                director: "",
+                name: "",
+                birth: "",
+                bio: "",
+                death: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>Registering a new user</td>
+          <td>/users/:newUser</td>
+          <td>POST</td>
+          <td>Create JSON object with data about a new user
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                id: "",
+                username: "",
+                password: "",
+                email: "",
+                favorites: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>Allow users to update their personal info</td>
+          <td>/users/:userName</td>
+          <td>PUT</td>
+          <td>Update JSON object with new datalist
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                id: "",
+                username: "",
+                password: "",
+                email: "",
+                favorites: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>Allow users to add movies to their favorites list</td>
+          <td>/users/:username/favorites</td>
+          <td>PUT</td>
+          <td>Adds a object to the users favorites data
+            Example confirmation:
+              "Movie was successfully added to favorites!"
+          </td>
+        </tr>
+        <tr>
+          <td>Allow users to delete movies from their favorites list</td>
+          <td>/users/:username/favorites/:movieID</td>
+          <td>DELETE</td>
+          <td>Deletes a object from the users favorites data
+            Example confirmation:
+              "Movie was successfully removed from favorites."
+          </td>
+        </tr>
+        <tr>
+          <td>Allow users to delete their registered account</td>
+          <td>/users/:username</td>
+          <td>DELETE</td>
+          <td>Removes the users data from the API
+            Example confirmation:
+              "Your account was successfully removed."
+          </td>
+        </tr>
+      </table>
   </body>
 </html>
