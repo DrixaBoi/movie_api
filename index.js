@@ -14,30 +14,35 @@ app.use(bodyParser.json());
 let topMovies = [
   {
     title: "GoodFellas",
+    movieID: "...",
     director: "Martin Scorsese",
     discription: "A young man grows up in the mob and works very hard to advance himself through the ranks.",
     genre: "Crime/Drama",
   },
   {
     title: "Casino",
+    movieID: "...",
     director: "Martin Scorsese",
     discription: "In early-1970s Las Vegas, a low-level mobster gets tapped by his bosses to head the Tangiers Casino",
     genre: "Crime/Drama",
   },
   {
     title: "Resivour Dogs",
+    movieID: "...",
     director: "Quentin Tarantino",
     discription: "Six criminals, each strangers to one another, are hired to carry out a robbery.",
     genre: "Crime",
   },
   {
     title: "The Irishman",
+    movieID: "...",
     director: "Martin Scorsese",
     discription: "In the 1950s, a truck driver gets involved with a Pennsylvania crime family.",
     genre: "Crime/Drama",
   },
   {
     title: "Scarface",
+    movieID: "...",
     director: "Brian De Palma",
     discription: "After getting a green card in exchange for a crime, a man stakes a claim on the drug trade in Miami.",
     genre: "Crime/Drama",
@@ -47,22 +52,27 @@ let topMovies = [
 let genres = [
   {
     type: "Crime",
+    genreID: "...",
     discription: "",
   },
   {
     type: "Drama",
+    genreID: "...",
     discription: "",
   },
   {
     type: "Action",
+    genreID: "...",
     discription: "",
   },
   {
     type: "Comedy",
+    genreID: "...",
     discription: "",
   },
   {
     type: "Documentary",
+    genreID: "...",
     discription: "",
   },
 ];
@@ -70,24 +80,28 @@ let genres = [
 let directors = [
   {
     name: "Martin Scorsese",
+    directorID: "...",
     birth: "...",
     bio: "...",
     death: "...",
   },
   {
     name: "Brian De Palma",
+    directorID: "...",
     birth: "",
     bio: "",
     death: "",
   },
   {
     name: "Quentin Tarantino",
+    directorID: "...",
     birth: "",
     bio: "",
     death: "",
   },
   {
     name: "Steven Spielberg",
+    directorID: "...",
     birth: "",
     bio: "",
     death: "",
@@ -129,7 +143,7 @@ app.post('/users/:newUser', (req, res) => {
   res.send("Registration complete!");
 });
 //user updates account information
-app.post('/users/:userName', (req, res) => {
+app.put('/users/:userName', (req, res) => {
   res.send("Account information updated!");
 });
 //users add new movie to favorites
