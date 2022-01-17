@@ -31,10 +31,16 @@
             <br>
             <code>
                 {
+                id: "",
                 title: "",
-                director: "",
                 description: "",
                 genre: "",
+                director: "",
+                actors: "",
+                rating: "",
+                release: "",
+                imagePath: "",
+                Featured: ""
                 }
             </code>
             <br>
@@ -56,27 +62,51 @@
             <br>
             <code>
                 {
-                title: "",
-                genre: ""
+                name: "",
+                description: ""
                 }
             </code>
             <br>
           </td>
         </tr>
-        <tr>
-          <td>View data about a director by name</td>
-          <td>/directors/:name</td>
+          <tr>
+            <td>View a specific genre</td>
+            <td>/genres/:genre</td>
+            <td>GET</td>
+            <td>A JSON holding data about genres</td>
+          </tr>
+          <tr>
+            <td>View data about a specific genre</td>
+            <td>/genres/:name</td>
+            <td>GET</td>
+            <td>A JSON object holding data about a genre and movies of that genre
+              <br>
+                Example:
+              <br>
+              <code>
+                  {
+                  name: "",
+                  description: ""
+                  }
+              </code>
+              <br>
+            </td>
+          </tr>
+          <tr>
+          <td>View list of all directors</td>
+          <td>/directors</td>
           <td>GET</td>
-          <td>A JSON object holding data about a director
+          <td>A JSON object holding data about all directors
             <br>
               Example:
             <br>
             <code>
                 {
-                director: "",
+                id: "",
                 name: "",
-                birth: "",
                 bio: "",
+                Movies: "",
+                birth: "",
                 death: ""
                 }
             </code>
@@ -84,8 +114,69 @@
           </td>
         </tr>
         <tr>
+          <td>View data about a director by name</td>
+          <td>/director/:directorName</td>
+          <td>GET</td>
+          <td>A JSON object holding data about a director
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                id: "",
+                name: "",
+                bio: "",
+                Movies: "",
+                birth: "",
+                death: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>View a list of Users</td>
+          <td>/users</td>
+          <td>GET</td>
+          <td>A JSON object with data about all users
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                id: "",
+                username: "",
+                password: "",
+                email: "",
+                favorites: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td>View a specific user</td>
+          <td>/users/:Username</td>
+          <td>GET</td>
+          <td>A JSON object with data about a user
+            <br>
+              Example:
+            <br>
+            <code>
+                {
+                id: "",
+                username: "",
+                password: "",
+                email: "",
+                favorites: ""
+                }
+            </code>
+            <br>
+          </td>
+        </tr>
+        <tr>
           <td>Registering a new user</td>
-          <td>/users/:newUser</td>
+          <td>/users</td>
           <td>POST</td>
           <td>Create JSON object with data about a new user
             <br>
@@ -105,7 +196,7 @@
         </tr>
         <tr>
           <td>Allow users to update their personal info</td>
-          <td>/users/:userName</td>
+          <td>/users/:Username</td>
           <td>PUT</td>
           <td>Update JSON object with new datalist
             <br>
@@ -125,7 +216,7 @@
         </tr>
         <tr>
           <td>Allow users to add movies to their favorites list</td>
-          <td>/users/:username/favorites</td>
+          <td>/users/:Username/movies/:MovieID</td>
           <td>PUT</td>
           <td>Adds a object to the users favorites data
             Example confirmation:
@@ -134,7 +225,7 @@
         </tr>
         <tr>
           <td>Allow users to delete movies from their favorites list</td>
-          <td>/users/:username/favorites/:movieID</td>
+          <td>/users/:Username/movies/:MovieID</td>
           <td>DELETE</td>
           <td>Deletes a object from the users favorites data
             Example confirmation:
@@ -143,7 +234,7 @@
         </tr>
         <tr>
           <td>Allow users to delete their registered account</td>
-          <td>/users/:username</td>
+          <td>/users/:Username</td>
           <td>DELETE</td>
           <td>Removes the users data from the API
             Example confirmation:
