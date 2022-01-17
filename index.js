@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const mongoose = require('mongoose');
 const models = require('./models.js');
 
-const Movies = Models.Movie;
-const Users = Models.User;
+const Movies = models.Movie;
+const Users = models.User;
 
 mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
