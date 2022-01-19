@@ -31,6 +31,7 @@ const Users = models.User;
 
 //mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 //main URL
 app.get('/', (req, res) => {
   res.send('Welcome to my movie app!');
