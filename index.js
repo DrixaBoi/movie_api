@@ -241,5 +241,3 @@ const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
   console.log('Listening on Port ' + port);
 });
-
-mongoimport --uri mongodb+srv://Kanthose:SaBBath699!@drixflix.ri29l.mongodb.net/test --collection movies --type json --file C:\Users\world\Documents\movies\movies.json
