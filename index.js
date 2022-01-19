@@ -13,6 +13,11 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const cors = require('cors');
+app.use(cors());
+
+const { check, validationResult } = require('express-validator');
+
 let auth = require('./auth')(app);
 
 const passport = require('passport');
@@ -100,11 +105,24 @@ app.get('/director/:directorName', passport.authenticate('jwt', { session: false
   });
 });
 //users register an account
-app.post('/users', (req, res) => {
-  Users.findOne({ Username: req.body.Username })
+app.post('/users', [
+  check('Username', 'Username is required to have at least 5 characters.').isLength({min: 5}),
+  check('Username', 'Username cannot contain non alphanumeric characters.').isAlphanumeric(),
+  check('Password', 'Password cannot be left blank.').not().isEmpty(),
+  check('Email', 'Not a valid Email format.').isEmail()
+], (req, res) => {
+
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+  let hashedPassword = Users.hashPassword(req.body.Password);
+  Users.findOne({ Username: req.body.Username }) //searches if username already exists
     .then((user) => {
-      if (user) {
-        return res.status(400).send(req.body.Username + 'Username already exists.');
+      if (user) { //if user found, tells them it already exists
+        return res.status(400).send(req.body.Username + ' already exists.');
       } else {
         Users
           .create({
@@ -114,11 +132,11 @@ app.post('/users', (req, res) => {
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
-          .then((user) =>{res.status(201).json(user) })
-        .catch((error) => {
+          .then((user) => {res.status(201).json(user) })
+          .catch((error) => {
           console.error(error);
           res.status(500).send('Error: ' + error);
-        })
+        });
       }
     })
     .catch((error) => {
@@ -219,6 +237,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('There was an error!');
 });
 
-app.listen (8080, () => {
-  console.log('Your app is listening on port 8080');
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+  console.log('Listening on Port ' + port);
 });
