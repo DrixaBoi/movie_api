@@ -12,4 +12,3 @@ Timestamp: Tue Dec 14 2021 22:08:49 GMT-0500 (Eastern Standard Time)
 
 URL: /favicon.ico
 Timestamp: Tue Dec 14 2021 22:08:50 GMT-0500 (Eastern Standard Time)
-
