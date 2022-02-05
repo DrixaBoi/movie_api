@@ -106,7 +106,7 @@ app.get('/director/:directorName', passport.authenticate('jwt', { session: false
   });
 });
 //users register an account
-app.post('/users', [
+app.post('/register', [
   check('Username', 'Username is required to have at least 5 characters.').isLength({min: 5}),
   check('Username', 'Username cannot contain non alphanumeric characters.').isAlphanumeric(),
   check('Password', 'Password cannot be left blank.').not().isEmpty(),
@@ -127,8 +127,8 @@ app.post('/users', [
       } else {
         Users
           .create({
-            Name: req.body.Name,
             Username: req.body.Username,
+            Name: req.body.Name,
             Password: req.body.Password,
             Email: req.body.Email,
             Birthday: req.body.Birthday
