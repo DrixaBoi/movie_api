@@ -129,7 +129,7 @@ app.post('/users', [
           .create({
             Username: req.body.Username,
             Name: req.body.Name,
-            Password: req.body.Password,
+            Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
