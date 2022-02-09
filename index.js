@@ -14,6 +14,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
+let allowedOrigins = [
+  'http://localhost:8080',
+  'http://localhost:1234',
+  'https://drixflix.netlify.app',
+  'http://testsite.com'
+]
 app.use(cors());
 
 const { check, validationResult } = require('express-validator');
