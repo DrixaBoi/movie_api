@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
 let allowedOrigins = [
-  'https://drixaboi.github.io/myFlix-Angular-client',
+  'https://drixaboi.github.io',
   'http://localhost:4200',
   'http://localhost:8080',
   'http://localhost:1234',
